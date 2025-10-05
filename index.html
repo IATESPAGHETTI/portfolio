@@ -1,500 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Deepu James | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700&family=Manrope:wght@800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #f8f8f8;
-      --primary-light: #e7ecff;
-      --accent: #ff4d6d;
-      --accent-light: #ff8fa3;
-      --bg: #111;
-      --card-bg: #222;
-      --text: #f8f8f8;
-      --text-light: #aaa;
-      --border: #333;
-      --footer-bg: #000;
-      --footer-text: #ccc;
-      --gradient: linear-gradient(135deg, #111 0%, #222 100%);
-      --overlay: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-    }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      min-height: 100vh;
-      letter-spacing: 0.03em;
-      background-image: var(--overlay), url('https://images.unsplash.com/photo-1639762681057-40897c3e8f86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1800&q=80');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      padding: 0 20px;
-      color: var(--text);
-      margin-bottom: 80px;
-    }
-    .hero h1 {
-      font-family: 'Anton', sans-serif;
-      font-size: 6rem;
-      margin: 0 0 16px;
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInUp 1s forwards 0.3s;
-    }
-    .hero p {
-      font-size: 1.8rem;
-      margin: 0 0 40px;
-      font-weight: 300;
-      opacity: 0.7;
-      max-width: 700px;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInUp 1s forwards 0.5s;
-    }
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInUp 1s forwards 0.7s;
-    }
-    .contact-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .contact-list a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 40px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 1.1rem;
-    }
-    .contact-list a:hover {
-      background: rgba(255,255,255,0.15);
-      transform: translateY(-4px);
-    }
-    .contact-list i {
-      font-size: 1.3rem;
-    }
-    .section {
-      margin-bottom: 120px;
-      opacity: 0;
-      transform: translateY(60px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .section.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .section-title {
-      font-family: 'Manrope', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 40px;
-      color: var(--text);
-      font-weight: 800;
-      position: relative;
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .section-title.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 80px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 3px;
-    }
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .skills-list li {
-      background: var(--accent);
-      color: var(--text);
-      padding: 12px 24px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .skills-list li:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 24px rgba(255,77,109,0.3);
-    }
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 40px;
-    }
-    .project-card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    }
-    .project-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
-    }
-    .project-card h3 {
-      margin: 0 0 16px;
-      font-size: 1.8rem;
-      color: var(--text);
-      font-weight: 700;
-    }
-    .project-card p {
-      margin: 0 0 24px;
-      color: var(--text-light);
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-    .tech {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--bg);
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-size: 1rem;
-      margin-right: 12px;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-    .project-card a {
-      color: var(--accent);
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      transition: color 0.2s;
-      font-size: 1.1rem;
-    }
-    .project-card a:hover {
-      color: var(--text);
-    }
-    .project-card a i {
-      font-size: 1.2rem;
-    }
-    .exp-card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 32px;
-      margin-bottom: 24px;
-      transition: transform 0.4s ease;
-    }
-    .exp-card:hover {
-      transform: translateY(-8px);
-    }
-    .exp-card strong {
-      display: block;
-      margin-bottom: 16px;
-      font-size: 1.6rem;
-      color: var(--accent);
-    }
-    .highlights ul {
-      padding-left: 0;
-      color: var(--text);
-      font-size: 1.2rem;
-      line-height: 2;
-      list-style: none;
-    }
-    .highlights li {
-      margin-bottom: 16px;
-      position: relative;
-      padding-left: 32px;
-    }
-    .highlights li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    footer {
-      background: var(--footer-bg);
-      color: var(--footer-text);
-      text-align: center;
-      padding: 40px 0;
-      margin-top: 120px;
-      border-radius: 40px 40px 0 0;
-      font-size: 1.1rem;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deepu James | Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700&family=Manrope:wght=800&display=swap" rel="stylesheet" />
+<style>
+:root {
+--primary: #f8f8f8;
+--primary-light: #e7ecff;
+--accent: #ff4d6d;
+--accent-light: #ff8fa3;
+--bg: #111;
+--card-bg: #222;
+--text: #f8f8f8;
+--text-light: #aaa;
+--border: #333;
+--footer-bg: #000;
+--footer-text: #ccc;
+--gradient: linear-gradient(135deg, #111 0%, #222 100%);
+--overlay: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+}
+body {
+margin: 0;
+font-family: 'Inter', sans-serif;
+background: var(--bg);
+color: var(--text);
+line-height: 1.7;
+min-height: 100vh;
+letter-spacing: 0.03em;
+background-image: var(--overlay), url('https://images.unsplash.com/photo-1639762681057-40897c3e8f86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1800&q=80');
+background-size: cover;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 24px;
+}
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+position: relative;
+padding: 0 20px;
+color: var(--text);
+margin-bottom: 80px;
+}
+.hero h1 {
+font-family: 'Anton', sans-serif;
+font-size: 6rem;
+margin: 0 0 16px;
+font-weight: 400;
+letter-spacing: -0.03em;
+line-height: 1;
+text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+opacity: 0;
+transform: translateY(40px);
+animation: fadeInUp 1s forwards 0.3s;
+}
+.hero p {
+font-size: 1.8rem;
+margin: 0 0 40px;
+font-weight: 300;
+opacity: 0.7;
+max-width: 700px;
+opacity: 0;
+transform: translateY(40px);
+animation: fadeInUp 1s forwards 0.5s;
+}
+.contact-list {
+list-style: none;
+padding: 0;
+display: flex;
+justify-content: center;
+gap: 24px;
+flex-wrap: wrap;
+margin-bottom: 40px;
+opacity: 0;
+transform: translateY(40px);
+animation: fadeInUp 1s forwards 0.7s;
+}
+.contact-list li {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.contact-list a {
+color: var(--text);
+text-decoration: none;
+font-weight: 600;
+transition: color 0.2s, transform 0.2s;
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 14px 28px;
+border-radius: 40px;
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(8px);
+border: 1px solid rgba(255,255,255,0.1);
+font-size: 1.1rem;
+}
+.contact-list a:hover {
+background: rgba(255,255,255,0.15);
+transform: translateY(-4px);
+}
+.contact-list i {
+font-size: 1.3rem;
+}
+.section {
+margin-bottom: 120px;
+opacity: 0;
+transform: translateY(60px);
+transition: opacity 1s ease, transform 1s ease;
+}
+.section.in-view {
+opacity: 1;
+transform: translateY(0);
+}
+.section-title {
+font-family: 'Manrope', sans-serif;
+font-size: 3rem;
+margin-bottom: 40px;
+color: var(--text);
+font-weight: 800;
+position: relative;
+display: inline-block;
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 1s ease, transform 1s ease;
+}
+.section-title.in-view {
+opacity: 1;
+transform: translateY(0);
+}
+.section-title::after {
+content: '';
+position: absolute;
+bottom: -8px;
+left: 0;
+width: 80px;
+height: 6px;
+background: var(--accent);
+border-radius: 3px;
+}
+.skills-list {
+display: flex;
+flex-wrap: wrap;
+gap: 16px;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.skills-list li {
+background: var(--accent);
+color: var(--text);
+padding: 12px 24px;
+border-radius: 40px;
+font-weight: 600;
+font-size: 1.1rem;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.skills-list li:hover {
+transform: translateY(-6px);
+box-shadow: 0 8px 24px rgba(255,77,109,0.3);
+}
+.project-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+gap: 40px;
+}
+.project-card {
+background: var(--card-bg);
+border-radius: 24px;
+padding: 32px;
+box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+transition: transform 0.4s ease, box-shadow 0.4s ease;
+border: 1px solid var(--border);
+position: relative;
+overflow: hidden;
+}
+.project-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 6px;
+background: linear-gradient(90deg, var(--accent), var(--accent-light));
+}
+.project-card:hover {
+transform: translateY(-12px);
+box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+}
+.project-card h3 {
+margin: 0 0 16px;
+font-size: 1.8rem;
+color: var(--text);
+font-weight: 700;
+}
+.project-card p {
+margin: 0 0 24px;
+color: var(--text-light);
+font-size: 1.1rem;
+line-height: 1.8;
+}
+.tech {
+display: inline-block;
+background: var(--accent-light);
+color: var(--bg);
+padding: 8px 18px;
+border-radius: 30px;
+font-size: 1rem;
+margin-right: 12px;
+margin-bottom: 12px;
+font-weight: 600;
+}
+.project-card a {
+color: var(--accent);
+font-weight: 700;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 12px;
+transition: color 0.2s;
+font-size: 1.1rem;
+}
+.project-card a:hover {
+color: var(--text);
+}
+.project-card a i {
+font-size: 1.2rem;
+}
+.exp-card {
+background: var(--card-bg);
+border-radius: 24px;
+padding: 32px;
+margin-bottom: 24px;
+transition: transform 0.4s ease;
+}
+.exp-card:hover {
+transform: translateY(-8px);
+}
+.exp-card strong {
+display: block;
+margin-bottom: 16px;
+font-size: 1.6rem;
+color: var(--accent);
+}
+.highlights ul {
+padding-left: 0;
+color: var(--text);
+font-size: 1.2rem;
+line-height: 2;
+list-style: none;
+}
+.highlights li {
+margin-bottom: 16px;
+position: relative;
+padding-left: 32px;
+}
+.highlights li::before {
+content: '→';
+position: absolute;
+left: 0;
+color: var(--accent);
+font-weight: 700;
+}
+footer {
+background: var(--footer-bg);
+color: var(--footer-text);
+text-align: center;
+padding: 40px 0;
+margin-top: 120px;
+border-radius: 40px 40px 0 0;
+font-size: 1.1rem;
+}
 
-    /* About Me flex layout */
-    .about-flex {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      justify-content: center;
-      max-width: 900px;
-      margin: 0 auto 40px auto;
-      flex-wrap: wrap;
-    }
-    .about-img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.6);
-      flex-shrink: 0;
-    }
-    .about-text {
-      flex: 1;
-      min-width: 240px;
-    }
-    .about-text p {
-      font-size: 1.2rem;
-      color: var(--text);
-      margin: 0;
-      line-height: 1.7;
-    }
+.about-flex {
+display: flex;
+align-items: center;
+gap: 40px;
+justify-content: center;
+max-width: 900px;
+margin: 0 auto 40px auto;
+flex-wrap: wrap;
+}
+.about-img {
+width: 160px;
+height: 160px;
+border-radius: 50%;
+object-fit: cover;
+box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+flex-shrink: 0;
+}
+.about-text {
+flex: 1;
+min-width: 240px;
+}
+.about-text p {
+font-size: 1.2rem;
+color: var(--text);
+margin: 0;
+line-height: 1.7;
+}
 
-    @media (max-width: 700px) {
-      .about-flex {
-        flex-direction: column;
-        gap: 24px;
-        text-align: center;
-      }
-      .about-img {
-        width: 120px;
-        height: 120px;
-      }
-      .hero h1 {
-        font-size: 3.5rem;
-      }
-      .hero p {
-        font-size: 1.4rem;
-      }
-      .contact-list {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-      }
-      .contact-list a {
-        width: 240px;
-        justify-content: center;
-      }
-      .section-title {
-        font-size: 2.2rem;
-      }
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-      .skills-list li {
-        font-size: 1rem;
-      }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+@media (max-width: 700px) {
+.about-flex {
+flex-direction: column;
+gap: 24px;
+text-align: center;
+}
+.about-img {
+width: 120px;
+height: 120px;
+}
+.hero h1 {
+font-size: 3.5rem;
+}
+.hero p {
+font-size: 1.4rem;
+}
+.contact-list {
+flex-direction: column;
+align-items: center;
+gap: 16px;
+}
+.contact-list a {
+width: 240px;
+justify-content: center;
+}
+.section-title {
+font-size: 2.2rem;
+}
+.project-grid {
+grid-template-columns: 1fr;
+}
+.skills-list li {
+font-size: 1rem;
+}
+}
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
-  <div class="hero">
-    <!-- Image removed from here -->
-    <h1>DEEPU JAMES</h1>
-    <p>B.Tech CSE Student | AI & Full-Stack Developer</p>
-    <ul class="contact-list">
-      <li><a href="mailto:deepujames089@gmail.com"><i class="fas fa-envelope"></i> deepujames089@gmail.com</a></li>
-      <li><a href="tel:9660031068"><i class="fas fa-phone"></i> 9660031068</a></li>
-      <li><a href="https://github.com/IATESPAGHETTI" target="_blank"><i class="fab fa-github"></i> IATESPAGHETTI</a></li>
-      <li><a href="https://www.linkedin.com/in/deepu-j-89590723b" target="_blank"><i class="fab fa-linkedin"></i> deepu-j-89590723b</a></li>
-    </ul>
-  </div>
+<div class="hero">
+<!-- Image removed from here -->
+<h1>DEEPU JAMES</h1>
+<p>Highly motivated Computer Science student, with skills in machine learning, Android app development, and real-time system integration. Strong organizational abilities and a track record of leveraging modern tools and algorithms to build innovative, impactful solutions.</p>
+<ul class="contact-list">
+<li><a href="mailto:deepujames089@gmail.com"><i class="fas fa-envelope"></i> deepujames089@gmail.com</a></li>
+<li><a href="tel:9660031068"><i class="fas fa-phone"></i> 9660031068</a></li>
+<li><a href="https://github.com/IATESPAGHETTI" target="_blank"><i class="fab fa-github"></i> IATESPAGHETTI</a></li>
+<li><a href="https://www.linkedin.com/in/deepu-j-89590723b" target="_blank"><i class="fab fa-linkedin"></i> deepu-j-89590723b</a></li>
+</ul>
+</div>
 
-  <main class="container">
-    <!-- About -->
-    <section class="section" id="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-flex">
-        <img src="img1.jpg" alt="Deepu James Photo" class="about-img" />
-        <div class="about-text">
-          <p>
-            Computer Science Engineering student passionate about AI, machine learning, and development.<br>
-            Experience in developing real-time applications and mobile apps with a focus on innovative solutions.<br>
-            Participated in Smart India Hackathon with a safety project for truck drivers.
-          </p>
-        </div>
-      </div>
-    </section>
+<main class="container">
+<!-- About -->
+<section class="section" id="about">
+<h2 class="section-title">About Me</h2>
+<div class="about-flex">
+<img src="img1.jpg" alt="Deepu James Photo" class="about-img" />
+<div class="about-text">
+<p>
+Highly motivated Computer Science student, with skills in machine learning, Android app development, and real-time system integration.<br>
+Strong organizational abilities and a track record of leveraging modern tools and algorithms to build innovative, impactful solutions.
+</p>
+</div>
+</div>
+</section>
 
-    <!-- Skills -->
-    <section class="section" id="skills">
-      <h2 class="section-title">Skills</h2>
-      <ul class="skills-list">
-        <li>Java</li>
-        <li>Python</li>
-        <li>C++</li>
-        <li>JavaScript</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>TensorFlow</li>
-        <li>PyTorch</li>
-        <li>OpenCV</li>
-        <li>MongoDB</li>
-        <li>Git</li>
-        <li>Android Studio</li>
-      </ul>
-    </section>
+<!-- Skills -->
+<section class="section" id="skills">
+<h2 class="section-title">Skills</h2>
+<ul class="skills-list">
+<li>Java</li>
+<li>Python</li>
+<li>C++</li>
+<li>SQL</li>
+<li>HTML</li>
+<li>JavaScript</li>
+<li>Node.js</li>
+<li>Express</li>
+<li>EJS</li>
+<li>React</li>
+<li>TensorFlow</li>
+<li>PyTorch</li>
+<li>OpenCV</li>
+<li>Transformers (Hugging Face)</li>
+<li>MongoDB</li>
+<li>Git</li>
+<li>Android Studio</li>
+<li>Pandas</li>
+<li>NumPy</li>
+<li>Handlebars</li>
+</ul>
+</section>
 
-    <!-- Projects -->
-    <section class="section" id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Real-Time Bully Detection Chat Model using BERT</h3>
-          <p>Built a 2-user real-time chat app using Socket.IO and Flask. Integrated a BERT-based model to detect bullying or offensive messages.</p>
-          <div>
-            <span class="tech">Python</span>
-            <span class="tech">Socket.IO</span>
-            <span class="tech">Flask</span>
-            <span class="tech">BERT</span>
-            <span class="tech">TensorFlow Lite</span>
-          </div>
-          <a href="https://github.com/IATESPAGHETTI/bert_chat" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
-        </div>
-        <div class="project-card">
-          <h3>Android Object Detection App</h3>
-          <p>Created a real-time detection app using TensorFlow Lite. Used CameraX for live camera input and OpenCV for preprocessing.</p>
-          <div>
-            <span class="tech">Java</span>
-            <span class="tech">TensorFlow Lite</span>
-            <span class="tech">CameraX</span>
-            <span class="tech">OpenCV</span>
-          </div>
-          <a href="https://github.com/IATESPAGHETTI/obj_det" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
-        </div>
-        <div class="project-card">
-          <h3>Web Development Dashboard (Full Stack)</h3>
-          <p>Designed and built a full-stack web dashboard for data visualization and management. Implemented authentication, dynamic charts, and responsive UI.</p>
-          <div>
-            <span class="tech">Node.js</span>
-            <span class="tech">Express</span>
-            <span class="tech">EJS</span>
-            <span class="tech">MongoDB</span>
-            <span class="tech">HTML</span>
-            <span class="tech">CSS</span>
-            <span class="tech">JS</span>
-          </div>
-          <a href="https://github.com/IATESPAGHETTI/webd3" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
-        </div>
-        <div class="project-card">
-          <h3>Pneumonia Detection Using Machine Learning</h3>
-          <p>Trained a model on X-ray images to identify pneumonia with 95% accuracy. Enhanced early diagnosis through automated predictions.</p>
-          <div>
-            <span class="tech">Python</span>
-            <span class="tech">TensorFlow</span>
-            <span class="tech">ResNet50</span>
-          </div>
-          <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
-        </div>
-      </div>
-    </section>
+<!-- Projects -->
+<section class="section" id="projects">
+<h2 class="section-title">Projects</h2>
+<div class="project-grid">
+<div class="project-card">
+<h3>Real-Time Bully Detection Chat Model using BERT</h3>
+<p>Developed a real-time 2-user chat application using Socket.IO and Flask for bi-directional communication. Integrated a BERT-based NLP model trained on a labeled Twitter dataset to detect bullying or offensive language. Converted the model to TensorFlow Lite for Android integration.</p>
+<div>
+<span class="tech">Python</span>
+<span class="tech">Socket.IO</span>
+<span class="tech">Flask</span>
+<span class="tech">BERT</span>
+<span class="tech">TensorFlow Lite</span>
+</div>
+<a href="https://github.com/IATESPAGHETTI/bert_chat" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
+</div>
+<div class="project-card">
+<h3>Android Object Detection App</h3>
+<p>Developed a real-time Android app for object detection using TensorFlow Lite for on-device inference. Integrated CameraX API to capture and process camera frames at 15-30 FPS. Utilized OpenCV for image preprocessing to improve model performance.</p>
+<div>
+<span class="tech">Java</span>
+<span class="tech">TensorFlow Lite</span>
+<span class="tech">CameraX</span>
+<span class="tech">OpenCV</span>
+</div>
+<a href="https://github.com/IATESPAGHETTI/obj_det" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
+</div>
+<div class="project-card">
+<h3>Web Development Dashboard (Full Stack)</h3>
+<p>Designed and built a full-stack web dashboard for data visualization and management. Implemented authentication, dynamic charts, and responsive UI with EJS, Node.js, and MongoDB.</p>
+<div>
+<span class="tech">Node.js</span>
+<span class="tech">Express</span>
+<span class="tech">EJS</span>
+<span class="tech">MongoDB</span>
+<span class="tech">HTML</span>
+<span class="tech">CSS</span>
+<span class="tech">JS</span>
+</div>
+<a href="https://github.com/IATESPAGHETTI/webd3" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
+</div>
+<div class="project-card">
+<h3>Pneumonia Detection Using Machine Learning</h3>
+<p>Trained a model on X-ray images to identify pneumonia with 95% accuracy. Enhanced early diagnosis through automated predictions.</p>
+<div>
+<span class="tech">Python</span>
+<span class="tech">TensorFlow</span>
+<span class="tech">ResNet50</span>
+</div>
+<a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View on GitHub</a>
+</div>
+</div>
+</section>
 
-    <!-- Experience -->
-    <section class="section" id="experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="exp-card">
-        <strong>Smart India Hackathon</strong>
-        <p>Developed a safety project to detect eye movement in truck drivers using sensors, reducing risk of accidents due to drowsiness.</p>
-      </div>
-    </section>
+<!-- Experience -->
+<section class="section" id="experience">
+<h2 class="section-title">Experience</h2>
+<div class="exp-card">
+<strong>Centre for Development of Telematics (CDOT), New Delhi — Intern (Jun-Jul 2025)</strong>
+<p>Developed Linux shell scripts for automation of error analysis on embedded systems and enhanced diagnostic processes through scripting and optimization.</p>
+</div>
+<div class="exp-card">
+<strong>VD NextGen Digital Private Limited (VDocs), Noida — Web Developer Intern (Jun-Jul 2025)</strong>
+<p>Worked on front-end web development and responsive UI design for a digital health platform using HTML, CSS, JavaScript, and React.</p>
+</div>
+<div class="exp-card">
+<strong>Smart India Hackathon</strong>
+<p>Developed a safety project to detect eye movement in truck drivers using sensors, reducing risk of accidents due to drowsiness.</p>
+</div>
+</section>
 
-    <!-- Highlights -->
-    <section class="section" id="highlights">
-      <h2 class="section-title">Highlights</h2>
-      <ul class="highlights">
-        <li>Developed a comprehensive menstrual cycle tracking website</li>
-        <li>Hands-on experience with Node.js, EJS, MongoDB</li>
-        <li>Engineered a women’s safety tracking device with automated alerts</li>
-        <li>Strong technical and communication skills</li>
-      </ul>
-    </section>
-  </main>
+<!-- Highlights -->
+<section class="section" id="highlights">
+<h2 class="section-title">Highlights</h2>
+<ul class="highlights">
+<li>Developed a comprehensive website for tracking menstrual cycles, storing dates, and recording symptoms</li>
+<li>Hands-on experience with Node.js, EJS, and full-stack development</li>
+<li>Engineered an innovative women’s safety tracking device that enhances security with automated alerts</li>
+<li>Strong technical and communication skills, teamwork, adaptability, problem-solving, time management, critical thinking, creativity, attention to detail</li>
+<li>Participated in Smart India Hackathon</li>
+</ul>
+</section>
+</main>
 
-  <footer>
-    &copy; 2025 Deepu James
-  </footer>
+<footer>
+&copy; 2025 Deepu James
+</footer>
 
-  <script>
-    // Scroll animation (IntersectionObserver)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-        }
-      });
-    }, { threshold: 0.1 });
+<script>
+// Scroll animation (IntersectionObserver)
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('in-view');
+}
+});
+}, { threshold: 0.1 });
 
-    document.querySelectorAll('.section, .section-title').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
+document.querySelectorAll('.section, .section-title').forEach(section => {
+observer.observe(section);
+});
+</script>
 </body>
 </html>
