@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "website-structure": {
+      "source": "kostja94/marketing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/strategies/structure/website-structure/SKILL.md",
+      "computedHash": "f456dc92e950ea3bdc496c0bff11904bd24001bb1c1a0dc58ddf2ac1e81ff727"
+    },
+    "website-to-hyperframes": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/website-to-hyperframes/SKILL.md",
+      "computedHash": "4d6f7ea7c0fabd0e7572d26f85fcf83974ac75b19ec1e49529a4e01115302ab4"
+    }
+  }
+}
