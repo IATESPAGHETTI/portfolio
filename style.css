@@ -155,6 +155,13 @@ body {
   text-decoration: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  gap: 12px;
+}
+
+.contact-list a.resume-btn i {
+  color: var(--accent);
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-list a.resume-btn:hover {
@@ -163,6 +170,11 @@ body {
   transform: translateY(-5px);
   border-color: var(--accent);
   box-shadow: 0 10px 20px var(--accent-glow);
+}
+
+.contact-list a.resume-btn:hover i {
+  color: #000;
+  transform: scale(1.1);
 }
 
 .scroll-indicator {

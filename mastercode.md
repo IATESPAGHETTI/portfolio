@@ -30,8 +30,11 @@
           <li><a href="tel:9660031068" class="hover-target"><i class="fas fa-phone"></i></a></li>
           <li><a href="https://github.com/IATESPAGHETTI" target="_blank" class="hover-target"><i class="fab fa-github"></i></a></li>
           <li><a href="https://www.linkedin.com/in/deepu-j-89590723b" target="_blank" class="hover-target"><i class="fab fa-linkedin"></i></a></li>
-          <!-- ADD THIS -->
-          <li><a href="resume.pdf" target="_blank" class="hover-target resume-btn">Resume</a></li>
+          <li>
+            <a href="resume.pdf" target="_blank" class="hover-target resume-btn">
+              <i class="fas fa-file-pdf"></i> Resume
+            </a>
+          </li>
         </ul>
         <div class="scroll-indicator">
           <span>Scroll</span>
@@ -327,6 +330,13 @@ body {
   text-decoration: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  gap: 12px;
+}
+
+.contact-list a.resume-btn i {
+  color: var(--accent);
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-list a.resume-btn:hover {
@@ -335,6 +345,11 @@ body {
   transform: translateY(-5px);
   border-color: var(--accent);
   box-shadow: 0 10px 20px var(--accent-glow);
+}
+
+.contact-list a.resume-btn:hover i {
+  color: #000;
+  transform: scale(1.1);
 }
 
 .scroll-indicator {
