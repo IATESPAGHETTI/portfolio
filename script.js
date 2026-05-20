@@ -14,7 +14,17 @@ const lenis = new Lenis({
 // Integrate GSAP with Lenis
 gsap.registerPlugin(ScrollTrigger);
 
-lenis.on('scroll', ScrollTrigger.update);
+lenis.on('scroll', (e) => {
+  ScrollTrigger.update();
+  
+  // Calculate scroll progress percentage
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollHeight > 0 ? (e.scroll / scrollHeight) * 100 : 0;
+  const progressBar = document.querySelector('.scroll-progress');
+  if (progressBar) {
+    progressBar.style.width = `${progress}%`;
+  }
+});
 
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
@@ -144,6 +154,10 @@ cards.forEach(card => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
+    // Set custom properties for hover glow tracking
+    card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+    card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+    
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
@@ -230,6 +244,11 @@ fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated`)
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
+        
+        // Set custom properties for hover glow tracking
+        card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+        card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+        
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         const rotateX = ((y - centerY) / centerY) * -5;
